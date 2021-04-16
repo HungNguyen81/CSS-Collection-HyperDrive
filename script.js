@@ -16,6 +16,7 @@ s.height = window.innerHeight;
 
 var shipCenter = { x: s.width / 2, y: s.height / 2 - 100 };
 var decreaseInterval = null;
+var MdecreaseInterval = null;
 
 var flameEndX = shipCenter.x;
 
@@ -50,32 +51,32 @@ function eventListeners() {
 			}
 		}, 100);
 	});
-	$("body").mousedown( function (e) {
-		// if(e.which == 1){
+	$("#btn").mousedown( function (e) {
+		// if(e.which == 1){		
 			console.log("down\n");
 			$("h1").addClass("pressed");
 			console.log('M' + speed);
 
-			clearInterval(MdecreaseInterval);
+			// clearInterval(MdecreaseInterval);
 
 			if (speed < maxSpeed) {
 				speed += speed / 10;
 			}
 		// }
 	});
-	$("body").mouseup( function (e) {
-		console.log("up\n");
-		$("h1").removeClass("pressed");
+	// $("#btn").mouseup( function (e) {
+	// 	console.log("up\n");
+	// 	$("h1").removeClass("pressed");
 
-		MdecreaseInterval = setInterval(function () {
-			if (speed > 0.1) {
-				decreaseSpeed();
-			} else {
-				clearInterval(MdecreaseInterval);
-				speed = 0.1;
-			}
-		}, 1000);
-	});
+	// 	MdecreaseInterval = setInterval(function () {
+	// 		if (speed > 0.1) {
+	// 			decreaseSpeed();
+	// 		} else {
+	// 			clearInterval(MdecreaseInterval);
+	// 			speed = 0.1;
+	// 		}
+	// 	}, 100);
+	// });
 }
 
 function decreaseSpeed() {
