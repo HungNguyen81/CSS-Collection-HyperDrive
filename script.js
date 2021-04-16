@@ -51,7 +51,7 @@ function eventListeners() {
 			}
 		}, 100);
 	});
-	$("#btn").mousedown( function (e) {
+	$("body").mousedown( function (e) {
 		// if(e.which == 1){		
 			console.log("down\n");
 			$("h1").addClass("pressed");
