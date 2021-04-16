@@ -51,6 +51,61 @@ function eventListeners() {
 			}
 		}, 100);
 	});
+	$("body").on("mousemove", function (e) {
+		if(e.which == 1){
+			$("h1").addClass("pressed");
+			console.log(speed);
+
+			clearInterval(decreaseInterval);
+
+			if (speed < maxSpeed) {
+				speed += speed / 10;
+			}
+		}
+	});
+	$("body").on("mouseup", function (e) {
+		$("h1").removeClass("pressed");
+
+		decreaseInterval = setInterval(function () {
+			if (speed > 0.1) {
+				decreaseSpeed();
+			} else {
+				clearInterval(decreaseInterval);
+				speed = 0.1;
+			}
+		}, 100);
+	});
+
+	// for mouse 
+
+	// $("#btn").mouseup(function () {
+	// 	clearTimeout(pressTimer);
+	// 	// Clear timeout
+	// 	$("h1").removeClass("pressed");
+
+	// 	decreaseInterval = setInterval(function () {
+	// 		if (speed > 0.1) {
+	// 			decreaseSpeed();
+	// 		} else {
+	// 			clearInterval(decreaseInterval);
+	// 			speed = 0.1;
+	// 		}
+	// 	}, 100);
+	// }).mousedown(function () {
+	// 	// Set timeout
+	// 	pressTimer = window.setTimeout(function () {
+
+	// 		$("h1").addClass("pressed");
+	// 		console.log(speed);
+
+	// 		clearInterval(decreaseInterval);
+
+	// 		if (speed < maxSpeed) {
+	// 			speed += speed / 10;
+	// 		}
+	// 		break;
+	// 	}, 1000);
+	// });
 }
 
 function decreaseSpeed() {
