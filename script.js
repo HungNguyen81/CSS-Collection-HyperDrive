@@ -60,7 +60,7 @@ function eventListeners() {
 			// clearInterval(MdecreaseInterval);
 
 			if (speed < maxSpeed) {
-				speed += speed / 5;
+				speed += speed / 2;
 			}
 		// }
 	});
