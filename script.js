@@ -25,8 +25,7 @@ eventListeners();
 
 function eventListeners() {
 	$("body").on("keydown", function (e) {
-		switch (e.keyCode) {
-			case 32:
+		if(e.keyCode == 32){
 				$("h1").addClass("pressed");
 				console.log(speed);
 
@@ -35,17 +34,7 @@ function eventListeners() {
 				if (speed < maxSpeed) {
 					speed += speed / 10;
 				}
-				break;
-			case 0:
-				$("h1").addClass("pressed");
-				console.log(speed);
-
-				clearInterval(decreaseInterval);
-
-				if (speed < maxSpeed) {
-					speed += speed / 10;
-				}
-				break;
+				
 		}
 	});
 
@@ -61,30 +50,32 @@ function eventListeners() {
 			}
 		}, 100);
 	});
-	// $("body").on("mousemove", function (e) {
-	// 	if(e.which == 1){
-	// 		$("h1").addClass("pressed");
-	// 		console.log(speed);
+	$("body").mousedown( function (e) {
+		// if(e.which == 1){
+			console.log("down\n");
+			$("h1").addClass("pressed");
+			console.log('M' + speed);
 
-	// 		clearInterval(decreaseInterval);
+			clearInterval(MdecreaseInterval);
 
-	// 		if (speed < maxSpeed) {
-	// 			speed += speed / 10;
-	// 		}
-	// 	}
-	// });
-	// $("body").on("mouseup", function (e) {
-	// 	$("h1").removeClass("pressed");
+			if (speed < maxSpeed) {
+				speed += speed / 10;
+			}
+		// }
+	});
+	$("body").mouseup( function (e) {
+		console.log("up\n");
+		$("h1").removeClass("pressed");
 
-	// 	decreaseInterval = setInterval(function () {
-	// 		if (speed > 0.1) {
-	// 			decreaseSpeed();
-	// 		} else {
-	// 			clearInterval(decreaseInterval);
-	// 			speed = 0.1;
-	// 		}
-	// 	}, 100);
-	// });
+		MdecreaseInterval = setInterval(function () {
+			if (speed > 0.1) {
+				decreaseSpeed();
+			} else {
+				clearInterval(MdecreaseInterval);
+				speed = 0.1;
+			}
+		}, 1000);
+	});
 }
 
 function decreaseSpeed() {
